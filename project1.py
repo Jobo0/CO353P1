@@ -49,7 +49,6 @@ def main():
             deltaS += newEdges
             heapq.heapify(deltaS)
 
-
     T = set()
     deltaT = [
         (min(vertexDistList[r],vertexDistList[v]), r, v)
@@ -71,6 +70,28 @@ def main():
             ]
             deltaT += newEdges
             heapq.heapify(deltaT)
+
+    T_max = set()
+    deltaT_max = [
+        (min(vertexDistList[r], vertexDistList[v]), r, v)
+        for v, w in edgeAdjList[r]
+    ]
+    heapq.heapify(deltaT_max)
+    T_max.add(r)
+    while (len(T_max) != n):
+        c, u, v = heapq.heappop(deltaT_max) # this is the lowest dist edge in the graph
+        if v not in T_max:
+            T_max.add(v) # add to T
+            # add the edges from v to vertices not in S to delta S
+            maxAns += -c
+            print(f'Adding {v} to T_max with dist {c}')
+            newEdges = [
+                (-(min(vertexDistList[v], vertexDistList[s])), v, s)
+                for s, w in edgeAdjList[v]
+                if s not in T_max
+            ]
+            deltaT_max += newEdges
+            heapq.heapify(deltaT_max)    
 
     print(f'{minAns} {maxAns}')
 
