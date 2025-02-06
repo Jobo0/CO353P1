@@ -60,7 +60,7 @@ def MSTByVertex(n, r, edgeAdjList, vertexDistList):
             S.add(v) 
             vertexDistList[v] = c # set closeness of added vertex
             # add the edges from v to vertices not in S to delta S
-            print(f'Adding {v} to S with cost {c} and ans += {vertexDistList[u]}')
+            # print(f'Adding {v} to S with cost {c} and ans += {vertexDistList[u]}')
             newEdges = [
                 (w + vertexDistList[v], v, s)
                 for s, w in edgeAdjList[v]
@@ -96,7 +96,7 @@ def minClosenessSpanningTree(n, r, edgeAdjList, vertexDistList):
             T_min.add(v) # add to T
             # add the edges from v to vertices not in S to delta S
             minAns += c
-            print(f'Adding {v} to T_min with dist {c}')
+            # print(f'Adding {v} to T_min with dist {c}')
             # Adds the new edges into Tmin
             newEdges = [
                 (min(vertexDistList[v], vertexDistList[s]), v, s)
@@ -132,7 +132,7 @@ def maxClosenessSpanningTree(n, r, edgeAdjList, vertexDistList):
         if v not in T_max:
             T_max.add(v) # add to T
             maxAns += -c # subtracts the edge weight (inverted for max)
-            print(f'Adding {v} to T_max with dist {c}')
+            # print(f'Adding {v} to T_max with dist {c}')
             # Adds the new edges into Tmax
             newEdges = [
                 (-(min(vertexDistList[v], vertexDistList[s])), v, s)
