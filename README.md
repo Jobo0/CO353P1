@@ -4,4 +4,4 @@ Create an algorithm for finding the maximum and minimum closeness spanning trees
 Group: 
 Justin Zhao
 Dawson Ye
-Michael Shiefer
+Michael Schiefer
